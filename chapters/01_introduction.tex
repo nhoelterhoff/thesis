@@ -3,93 +3,52 @@
 
 \chapter{Introduction}\label{chapter:introduction}
 
-\section{Section}
-Citation test~\parencite{latex}.
+\section{Background and Context}
 
-Acronyms must be added in \texttt{main.tex} and are referenced using macros. The first occurrence is automatically replaced with the long version of the acronym, while all subsequent usages use the abbreviation.
+Chat-based tools like ChatGPT \cite{openai_best_202} and Perplexity \cite{perplexity_ai_perplexity_2024} have transformed the workspace by enabling knowledge workers to harness the capabilities of large language models (LLMs) to enhance productivity across multiple domains. LLMs offer vast potential through their capabilities for text generation, automation of structured tasks, and navigation of unstructured data \cite{alavi_how_2023}. Initial studies demonstrate considerable productivity increases for both individual workers and organizations using these models \cite{brynjolfsson_generative_2023, klarna_klarna_2024}. However, despite these promising results, the potential for LLM-based productivity improvements remains underutilized. Prior empirical studies highlight a significant barrier to widespread adoption: the challenges associated with prompt engineering, particularly for novice users \cite{kim_understanding_2024, zamfirescu-pereira_herding_2023, zamfirescu-pereira_why_2023}. 
 
-E.g. \texttt{\textbackslash ac\{TUM\}, \textbackslash ac\{TUM\}} $\Rightarrow$ \ac{TUM}, \ac{TUM}
+Building upon existing Human-AI (H-AI) research, this thesis will explore ways to improve LLM accessibility and efficiency, specifically through designing and evaluating a new, intuitive interface for LLM-delegated tasks in everyday knowledge work. The ultimate goal is to enable all workers, regardless of prior experience, to equally benefit from LLM-driven productivity enhancements.
 
-For more details, see the documentation of the \texttt{acronym} package\footnote{\url{https://ctan.org/pkg/acronym}}.
-\subsection{Subsection}
+\section{Problem Statement}
 
-See~\autoref{tab:sample}, \autoref{fig:sample-drawing}, \autoref{fig:sample-plot}, \autoref{fig:sample-listing}.
+Traditional software relies primarily on graphical user interfaces (GUIs) that are intuitive and provide direct, visual feedback. However, current LLM-based tools, such as ChatGPT or Perplexity, mainly rely on a conversation-style text-based input format. While this text-based format offers flexibility across various use cases, it requires users to give precise, well-structured prompts that align with the model’s strengths and limitations \cite{zamfirescu-pereira_why_2023}. The discipline of prompt engineering has emerged as a critical skill, with empirical evidence suggesting that effective prompt design substantially impacts the quality of LLM output \cite{chen_next_2023}.
 
-\begin{table}[htpb]
-  \caption[Example table]{An example for a simple table.}\label{tab:sample}
-  \centering
-  \begin{tabular}{l l l l}
-    \toprule
-      A & B & C & D \\
-    \midrule
-      1 & 2 & 1 & 2 \\
-      2 & 3 & 2 & 3 \\
-    \bottomrule
-  \end{tabular}
-\end{table}
+For novice users, creating prompts that yield high-quality outputs is challenging, as the model's responses are not entirely explainable and are dependent on the quality and clarity of the input prompt \cite{cabrero-daniel_perceived_2023}. This often results in trial-and-error cycles, with novices generating less effective results than experienced prompt engineers \cite{kim_understanding_2024, mugunthan_overcoming_2023}. Consequently, the productivity gains achieved through LLMs are unequally distributed, with novice users at a distinct disadvantage.
 
-\begin{figure}[htpb]
-  \centering
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}[node distance=3cm]
-    \node (R0) {$R_1$};
-    \node (R1) [right of=R0] {$R_2$};
-    \node (R2) [below of=R1] {$R_4$};
-    \node (R3) [below of=R0] {$R_3$};
-    \node (R4) [right of=R1] {$R_5$};
+\section{Significance of the Study}
 
-    \path[every node]
-      (R0) edge (R1)
-      (R0) edge (R3)
-      (R3) edge (R2)
-      (R2) edge (R1)
-      (R1) edge (R4);
-  \end{tikzpicture}
-  \caption[Example drawing]{An example for a simple drawing.}\label{fig:sample-drawing}
-\end{figure}
+This study addresses the crucial challenge of making LLM tools more accessible and productive for users of all experience levels. By bridging the skill gap in prompt engineering through intuitive, task-specific GUIs, this thesis aims to empower knowledge workers to leverage LLMs effectively without extensive prompt engineering skills. Research in Human-Computer Interaction (HCI) suggests that GUI-based interactions can enable users of different skill levels to benefit more equally from technological tools \cite{shneiderman_direct_1983}. This thesis will apply and adapt HCI principles to develop an alternative interface for LLMs that abstracts prompt complexity, fostering inclusivity and enhanced productivity in professional environments.
 
-\begin{figure}[htpb]
-  \centering
+\section{Research Question}
 
-  \pgfplotstableset{col sep=&, row sep=\\}
-  % This should probably go into a file in data/
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1000 \\
-    2 & 1500 \\
-    3 & 1600 \\
-  }\exampleA
-  \pgfplotstableread{
-    a & b    \\
-    1 & 1200 \\
-    2 & 800 \\
-    3 & 1400 \\
-  }\exampleB
-  % This should probably go into a file in figures/
-  \begin{tikzpicture}
-    \begin{axis}[
-        ymin=0,
-        legend style={legend pos=south east},
-        grid,
-        thick,
-        ylabel=Y,
-        xlabel=X
-      ]
-      \addplot table[x=a, y=b]{\exampleA};
-      \addlegendentry{Example A};
-      \addplot table[x=a, y=b]{\exampleB};
-      \addlegendentry{Example B};
-    \end{axis}
-  \end{tikzpicture}
-  \caption[Example plot]{An example for a simple plot.}\label{fig:sample-plot}
-\end{figure}
+This thesis addresses the following research question:
 
-\begin{figure}[htpb]
-  \centering
-  \begin{tabular}{c}
-  \begin{lstlisting}[language=SQL]
-    SELECT * FROM tbl WHERE tbl.str = "str"
-  \end{lstlisting}
-  \end{tabular}
-  \caption[Example listing]{An example for a source code listing.}\label{fig:sample-listing}
-\end{figure}
+\textbf{Research Question}: How does abstracting prompt engineering complexities through a dynamic interface influence the productivity, quality of work, and efficiency of knowledge workers engaging with LLMs?
+
+This research question aims to evaluate the effects of interface design on user performance and experience, particularly in reducing the skill gap across user proficiency levels.
+
+\section{Objectives of the Study}
+
+To answer the research question, this thesis has three primary objectives:
+
+\begin{itemize}
+    \item \textbf{Objective 1}: Identify and apply essential design principles for effective Human-AI interactions.
+    \item \textbf{Objective 2}: Analyze the limitations of existing text-based LLM interfaces and propose methods to abstract the complexities of prompt engineering.
+    \item \textbf{Objective 3}: Assess the impact of a dynamic, intuitive GUI on the productivity, quality of work, and efficiency of knowledge workers by comparing it to the traditional text-based interface.
+\end{itemize}
+
+By meeting these objectives, the study will provide insights into the effectiveness of GUI-based prompt abstraction for improving accessibility to LLM tools across user expertise levels.
+
+\section{Structure of the Thesis}
+This thesis is structured as follows:
+
+\begin{itemize}
+    \item \textbf{Chapter 1}: Introduction – outlines the background, significance, problem statement, research question, and objectives.
+    \item \textbf{Chapter 2}: Theoretical Background – explores the development of generative AI, LLMs, and prompt engineering, including their application in knowledge work.
+    \item \textbf{Chapter 3}: Literature Review – reviews relevant studies on prompt engineering, GUI interactions, and Human-AI interface design.
+    \item \textbf{Chapter 4}: Research Objectives and Hypotheses – outlines the study’s specific goals and hypotheses related to GUI-based prompt engineering.
+    \item \textbf{Chapter 5}: Methodology – details the study’s research design, participant recruitment, interfaces, tasks, and data collection methods.
+    \item \textbf{Chapter 6}: Results – presents findings from data analysis.
+    \item \textbf{Chapter 7}: Discussion – interprets the results, discusses implications for developers, knowledge workers, and society, and addresses limitations.
+    \item \textbf{Chapter 8}: Conclusion – summarizes the key findings, contributions, and potential directions for future research.
+\end{itemize}
